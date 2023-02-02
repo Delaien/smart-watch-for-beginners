@@ -73,6 +73,7 @@ def notifs():
             oled.fill_rect(39, 27, 10, 10, 1)
             oled.fill_rect(59, 27, 10, 10, 1)
             oled.fill_rect(79, 27, 10, 10, 1)
+            oled.show()
         else:
             for y, row in enumerate(NOTIFS):
                 for x, c in enumerate(row):
@@ -83,12 +84,12 @@ def notifs():
             swap_val = (getBUp(), swap_val)[swap_val != 0]
             if swap_val != 0 and getBUp() == 0:
                 index -= swap_val
-                index %= nb_notif
+                index %= nb_notifs
                 swap_val = 0
 
-        # Affiche la notification sélectionnée
-        for i in range(len(Notifs[index])):
-            oled.text(Notifs[index][i], 0, 22 + i * 10, 1)
+            # Affiche la notification sélectionnée
+            for i in range(len(Notifs[index])):
+                oled.text(Notifs[index][i], 0, 22 + i * 10, 1)
 
-    oled.show()
+        oled.show()
         
